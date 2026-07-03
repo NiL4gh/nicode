@@ -1,0 +1,29 @@
+{
+  // =========================================================================
+  // nicode — Template Configuration
+  // Copy this file to ~/.config/opencode/opencode.jsonc and customize.
+  // =========================================================================
+
+  // $schema: "https://opencode.ai/schemas/config.json",
+
+  // ----- Provider -----------------------------------------------------------
+  // "provider": { "id": "nvidia", "model": "meta/llama-3.1-8b-instruct" },
+
+  // ----- MCP Servers --------------------------------------------------------
+  // "mcpServers": {
+  //   "firecrawl": {
+  //     "type": "ws",
+  //     "url": "..."
+  //   }
+  // }
+
+  // ----- Skills ------------------------------------------------------------
+  // "skills": { "dirs": ["~/.config/opencode/skills"] }
+
+  // ----- Rate Limits -------------------------------------------------------
+  // "providers": {
+  //   "nvidia": {
+  //     "options": { "rateLimit": { "requestsPerMinute": 30 } }
+  //   }
+  // }
+}
