@@ -10,16 +10,21 @@ A personal fork of [opencode](https://github.com/opencode-ai/opencode) with MCP 
 - **Local TUI Commands** — `/rate-limit`, `/config`, `/help`, `/clear`, `/cost`, `/doctor` handled locally without reaching the model.
 - **All Claude Code Skills/Plugins/Rules** preserved from original opencode.
 
-## Installation
+## Running
 
 ```powershell
-# From build output:
+# 1. Build (from repo root):
+cd packages\opencode
 bun run build
-Copy-Item packages\opencode\dist\opencode-windows-x64\bin\opencode.exe ~\.opencode\bin\nicode.exe -Force
 
-# Run:
+# 2. Run via PowerShell function (already added to profile):
 nicode
+
+# Or run directly:
+packages\opencode\dist\opencode-windows-x64\bin\opencode.exe
 ```
+
+No standalone install — the `nicode` PowerShell function points to the built binary in the repo.
 
 ## Configuration
 
@@ -27,17 +32,31 @@ nicode
 notepad ~\.config\opencode\opencode.jsonc
 ```
 
-See `opencode.template.jsonc` for a reference config.
+See `opencode.template.jsonc` for a reference config. Personal config stays at `~\.config\opencode\opencode.jsonc` — outside the repo.
 
-## Upstream Tracking
+## Upstream Merge Strategy (Manual)
+
+When opencode (or another upstream) releases changes you want:
 
 ```powershell
-git remote add upstream https://github.com/opencode-ai/opencode.git
+# From repo root (C:\Users\niloy\Documents\nicode):
 git fetch upstream
 git checkout -b merge-upstream main
 git pull upstream main
-# Resolve conflicts, then merge into main
+# Resolve conflicts, commit, then merge back:
+git checkout main
+git merge merge-upstream
+git branch -d merge-upstream
 ```
+
+**Porting features from other sources** (Claude Code, other forks):
+
+1. Create a branch: `git checkout -b port-feature`
+2. Manually apply the changes (patch files, cherry-pick from other repos, or hand-write)
+3. Keep changes focused — one feature per branch
+4. PR into `main` when done
+
+**Keep your patches on top**: All nicode-specific changes are in commits on `main`. When upstream releases, merge them in. Conflicts are typically small — our modifications are localized to a few files (`session/tools.ts`, `provider/rate-limit.ts`, `tui/` commands, etc.).
 
 ## Local TUI Commands
 
