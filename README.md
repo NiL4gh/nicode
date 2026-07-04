@@ -21,7 +21,7 @@ bun run build
 nicode
 
 # Or run directly:
-packages\opencode\dist\opencode-windows-x64\bin\opencode.exe
+packages\opencode\dist\opencode-windows-x64\bin\nicode.exe
 ```
 
 No standalone install — the `nicode` PowerShell function points to the built binary in the repo.

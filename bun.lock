@@ -558,7 +558,7 @@
       "name": "opencode",
       "version": "1.17.13",
       "bin": {
-        "opencode": "./bin/opencode",
+        "nicode": "./bin/nicode",
       },
       "dependencies": {
         "@actions/core": "1.11.1",
